@@ -37,10 +37,6 @@ function stopAudio(audioObject) {
   audioObject.pause();
 }
 
-function play(){
-  playAudio(song);
-}
-
 
 function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -236,7 +232,8 @@ function startTimer() {
 */
 function whack(event) {
   // TODO: Write your code here.
-  updateScore()
+  updateScore();
+  playAudio(audioHit);
   return points;
 }
 
@@ -271,7 +268,7 @@ function setDuration(duration) {
 *
 */
 function stopGame(){
-  // stopAudio(song);  //optional
+  stopAudio(song); 
   clearInterval(timer);
   return "game stopped";
 }
@@ -287,6 +284,7 @@ function startGame(){
   showUp();
   setEventListeners();
   startTimer();
+  loopAudio(song);
   return "game started"
 }
 
